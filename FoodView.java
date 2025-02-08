@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Constructor to initialize GUI components and set up event handling
 public class FoodView extends JFrame {
     private JTextField foodIDField;
     private JLabel resultLabel;
@@ -15,7 +16,7 @@ public class FoodView extends JFrame {
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
-
+       // Add components to the window
         add(new JLabel("Enter Food ID:"));
         foodIDField = new JTextField(10);
         add(foodIDField);
@@ -50,11 +51,12 @@ public class FoodView extends JFrame {
             }
         });
 
-        setVisible(true);
+        setVisible(true);// Make the frame visible
     }
 
+    // Main method to start the application
     public static void main(String[] args) {
-        FoodModel model = new FoodModel();
+        FoodModel model = new FoodModel(); // Create model to handle food data
         FoodController controller = new FoodController(model);
         new FoodView(controller);
     }
