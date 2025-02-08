@@ -12,7 +12,7 @@ public class FoodView extends JFrame {
         this.controller = controller;
 
         setTitle("Food Expiration Checker");
-        setSize(400, 200);
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
@@ -26,6 +26,10 @@ public class FoodView extends JFrame {
         resultLabel = new JLabel(" ");
         add(resultLabel);
 
+        JButton reportButton = new JButton("Show Report");
+        add(reportButton);
+
+        // Action for the checkButton
         checkButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String foodID = foodIDField.getText().trim();
@@ -35,6 +39,14 @@ public class FoodView extends JFrame {
                 } else {
                     resultLabel.setText("Invalid Food ID");
                 }
+            }
+        });
+
+        // Action for the reportButton
+        reportButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String report = controller.generateReport();
+                JOptionPane.showMessageDialog(FoodView.this, report, "Food Expiration Report", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
